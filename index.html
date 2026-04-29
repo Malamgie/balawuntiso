@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bala Wunti Support Organisation | Building a Greater Bauchi</title>
+    
+    <!-- Google Fonts: Poppins for Headings, Inter for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons for a Modern, Premium Look -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* ==========================================================================
+           CSS VARIABLES & RESET
+           ========================================================================== */
+        :root {
+            --navy: #051329;
+            --navy-light: #0a1f44;
+            --gold: #E4B342;
+            --gold-hover: #f1c453;
+            --white: #ffffff;
+            --bg-light: #F8FAFC;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --radius-pill: 50px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--navy);
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ==========================================================================
+           UTILITY CLASSES
+           ========================================================================== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center { text-align: center; }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: var(--radius-pill);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--navy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(5, 19, 41, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--navy);
+            border-color: var(--navy);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(228, 179, 66, 0.2);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           NAVIGATION
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            z-index: 1001;
+        }
+
+        .logo h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--navy);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            font-size: 0.65rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: var(--navy);
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--navy);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at top right, rgba(228, 179, 66, 0.05) 0%, rgba(255,255,255,0) 50%);
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        /* Subtle dotted pattern for tech vibe */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(var(--text-light) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--navy);
+        }
+
+        .hero-content h1 span {
+            color: var(--gold);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* CANDIDATE IMAGE PLACEHOLDER */
+        .hero-image-placeholder {
+            width: 100%;
+            height: 650px;
+            background: linear-gradient(145deg, #f0f4f8, #e2e8f0);
+            border-radius: 40px;
+            position: relative;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.05), -20px -20px 60px rgba(255,255,255,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-image-placeholder::after {
+            content: 'Candidate Image\A(Transparent PNG)';
+            white-space: pre;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #94a3b8;
+            font-size: 1.2rem;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .hero-image-placeholder::before {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: var(--gold);
+            filter: blur(100px);
+            opacity: 0.2;
+            border-radius: 50%;
+        }
+
+        /* ==========================================================================
+           PILLARS SECTION
+           ========================================================================== */
+        .pillars-section {
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pillars-container {
+            background-color: var(--navy);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            box-shadow: 0 20px 40px rgba(5, 19, 41, 0.1);
+        }
+
+        .pillar-card {
+            text-align: center;
+            color: var(--white);
+            transition: var(--transition);
+            padding: 20px;
+            border-radius: var(--radius-md);
+        }
+
+        .pillar-card:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .pillar-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .pillar-card h3 {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           VISION SECTION
+           ========================================================================== */
+        .vision-section {
+            background-color: var(--bg-light);
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .section-tag {
+            color: var(--gold);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-tag::after {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .vision-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+        }
+
+        .vision-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: morph 8s ease-in-out infinite;
+            box-shadow: 0 20px 50px rgba(5, 19, 41, 0.15);
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        .map-placeholder::after {
+            content: 'Bauchi Map Graphic';
+            color: rgba(255,255,255,0.7);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================================================
+           IMPACT SECTION
+           ========================================================================== */
+        .impact-section {
+            background-color: var(--white);
+        }
+
+        .impact-container {
+            background-color: var(--navy);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            color: var(--white);
+        }
+
+        .impact-header {
+            margin-bottom: 40px;
+        }
+
+        .impact-header h2 {
+            color: var(--white);
+            font-size: 2.2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            background: rgba(228, 179, 66, 0.1);
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        .stat-content h3 {
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .stat-content p {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        /* ==========================================================================
+           TESTIMONIALS
+           ========================================================================== */
+        .testimonials-section {
+            background-color: var(--bg-light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 3rem;
+            color: rgba(228, 179, 66, 0.15);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--navy-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .author-info span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ==========================================================================
+           JOIN SECTION
+           ========================================================================== */
+        .join-section {
+            position: relative;
+        }
+
+        .join-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .join-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .join-content p {
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background-color: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            width: fit-content;
+            transition: var(--transition);
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1ebc59;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        }
+
+        .whatsapp-btn i {
+            font-size: 1.5rem;
+        }
+
+        .join-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 16px 20px;
+            background-color: var(--bg-light);
+            border: 1px solid transparent;
+            border-radius: var(--radius-md);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+            background-color: var(--white);
+            box-shadow: 0 0 0 4px rgba(228, 179, 66, 0.1);
+        }
+
+        .form-group select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            margin-top: 10px;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo h2 {
+            color: var(--white);
+        }
+
+        .footer-logo p {
+            color: #94a3b8;
+            margin-top: 20px;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================================================
+           MOBILE BOTTOM ACTION BAR
+           ========================================================================== */
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+        }
+
+        .mobile-bottom-bar button {
+            flex: 1;
+            padding: 18px 0;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-bottom-join {
+            background-color: var(--white);
+            color: var(--navy);
+        }
+
+        .btn-bottom-donate {
+            background-color: var(--gold);
+            color: var(--white);
+        }
+
+        /* ==========================================================================
+           RESPONSIVE DESIGN (MOBILE FIRST APPROACH IN MEDIA QUERIES)
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .hero-grid { gap: 30px; }
+            .hero-content h1 { font-size: 3rem; }
+            .pillars-container { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .join-grid { gap: 40px; padding: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .section-padding { padding: 60px 0; }
+            
+            .navbar { padding: 15px 0; background: var(--white); }
+            .nav-links, .nav-actions .btn { display: none; }
+            .mobile-toggle { display: block; }
+            
+            /* Mobile Menu Overlay */
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                padding: 30px 5%;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                border-top: 1px solid rgba(0,0,0,0.05);
+            }
+
+            .hero { padding-top: 100px; text-align: center; }
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-content p { margin: 0 auto 30px; }
+            .hero-buttons { justify-content: center; }
+            .hero-image-placeholder { height: 400px; }
+            
+            .pillars-container { grid-template-columns: 1fr 1fr; padding: 20px; gap: 15px; }
+            .pillar-card { padding: 15px; }
+            
+            .vision-grid { grid-template-columns: 1fr; text-align: center; }
+            .section-tag { justify-content: center; }
+            .section-tag::after { display: none; }
+            
+            .impact-container { padding: 40px 20px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 30px; }
+            
+            .testimonials-grid { grid-template-columns: 1fr; }
+            
+            .join-grid { grid-template-columns: 1fr; padding: 30px 20px; }
+            
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+            .footer-logo p { margin: 20px auto; }
+            .footer-links ul { align-items: center; }
+
+            /* Show mobile bottom bar, add padding to body */
+            .mobile-bottom-bar { display: flex; }
+            body { padding-bottom: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <h2>BWSO</h2>
+                <span>Bala Wunti Support Org</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#impact">Our Impact</a></li>
+                <li><a href="#join">Get Involved</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="#join" class="btn btn-secondary">Donate</a>
+                <a href="#join" class="btn btn-primary">Join Us <i class="ph ph-arrow-right"></i></a>
+                <i class="ph ph-list mobile-toggle" id="mobileToggle"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-content reveal">
+                <h1>Building a <br><span>Greater Bauchi</span>, Together!</h1>
+                <p>Jobs. Innovation. Opportunity for every citizen. Join the movement to transform our beloved state.</p>
+                <div class="hero-buttons">
+                    <a href="#join" class="btn btn-primary">Join the Movement <i class="ph ph-arrow-right"></i></a>
+                    <a href="#vision" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image reveal" style="transition-delay: 0.2s;">
+                <!-- Candidate Image Placeholder -->
+                <div class="hero-image-placeholder"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PILLARS SECTION -->
+    <section class="pillars-section" id="pillars">
+        <div class="container">
+            <div class="pillars-container reveal">
+                <div class="pillar-card">
+                    <i class="ph-fill ph-briefcase pillar-icon"></i>
+                    <h3>Job Creation</h3>
+                </div>
+                <div class="pillar-card">
+                    <i class="ph-fill ph-lightbulb pillar-icon"></i>
+                    <h3>Innovation & Tech</h3>
+                </div>
+                <div class="pillar-card">
+                    <i class="ph-fill ph-buildings pillar-icon"></i>
+                    <h3>Infrastructure</h3>
+                </div>
+                <div class="pillar-card">
+                    <i class="ph-fill ph-users-three pillar-icon"></i>
+                    <h3>People First</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION SECTION -->
+    <section class="section-padding vision-section" id="vision">
+        <div class="container vision-grid">
+            <div class="vision-content reveal">
+                <div class="section-tag">Our Vision</div>
+                <h2>Our Vision for Bauchi</h2>
+                <p>A state where every young person has an opportunity, every business can thrive, and every community can grow. We believe in harnessing the power of technology, agriculture, and human capital to build a self-sustaining economy.</p>
+                <a href="#join" class="btn btn-secondary">Explore Our Vision <i class="ph ph-arrow-right"></i></a>
+            </div>
+            <div class="vision-graphic reveal" style="transition-delay: 0.2s;">
+                <div class="map-placeholder"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPACT SECTION -->
+    <section class="section-padding impact-section" id="impact">
+        <div class="container">
+            <div class="impact-container reveal">
+                <div class="impact-header">
+                    <h2>Our Impact So Far</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i class="ph-fill ph-wifi-high stat-icon"></i>
+                        <div class="stat-content">
+                            <h3><span class="counter" data-target="32">0</span>+</h3>
+                            <p>Institutions Connected<br>to Free Internet</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="ph-fill ph-users stat-icon"></i>
+                        <div class="stat-content">
+                            <h3><span class="counter" data-target="50">0</span>K+</h3>
+                            <p>Lives Positively<br>Impacted</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="ph-fill ph-hand-heart stat-icon"></i>
+                        <div class="stat-content">
+                            <h3><span class="counter" data-target="100">0</span>+</h3>
+                            <p>Community Support<br>Initiatives</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section-padding testimonials-section">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-tag" style="justify-content: center;">Voices of Bauchi</div>
+                <h2>What the People Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal" style="transition-delay: 0.1s;">
+                    <i class="ph-fill ph-quotes quote-icon"></i>
+                    <p>"The technological initiatives brought to our local government have completely transformed how our youth learn and interact with the world."</p>
+                    <div class="author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Amina Y.</h4>
+                            <span>Educator</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal" style="transition-delay: 0.2s;">
+                    <i class="ph-fill ph-quotes quote-icon"></i>
+                    <p>"For the first time, we are seeing real infrastructure development that directly affects small business owners in the markets."</p>
+                    <div class="author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>Musa B.</h4>
+                            <span>Entrepreneur</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal" style="transition-delay: 0.3s;">
+                    <i class="ph-fill ph-quotes quote-icon"></i>
+                    <p>"The focus on job creation is not just a promise; it's a reality we are experiencing. The future looks bright for Bauchi."</p>
+                    <div class="author">
+                        <div class="author-avatar">F</div>
+                        <div class="author-info">
+                            <h4>Fatima S.</h4>
+                            <span>Graduate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOIN SECTION -->
+    <section class="section-padding join-section" id="join">
+        <div class="container">
+            <div class="join-grid reveal">
+                <div class="join-content">
+                    <div class="section-tag">Get Involved</div>
+                    <h2>Be Part of the Change</h2>
+                    <p>Whether you want to volunteer, donate, or simply stay updated with our progress, your support means everything. Let's build a greater Bauchi together.</p>
+                    
+                    <div class="contact-methods">
+                        <a href="#" class="whatsapp-btn">
+                            <i class="ph-fill ph-whatsapp-logo"></i> Join via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="join-form-wrapper">
+                    <form class="join-form" onsubmit="event.preventDefault(); alert('Thank you for joining the movement!');">
+                        <div class="form-group">
+                            <input type="text" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="" disabled selected>Select Local Government Area</option>
+                                <option value="alkaleri">Alkaleri</option>
+                                <option value="bauchi">Bauchi</option>
+                                <option value="bogoro">Bogoro</option>
+                                <option value="damban">Damban</option>
+                                <option value="darazo">Darazo</option>
+                                <option value="dass">Dass</option>
+                                <!-- Add other LGAs -->
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit">Register Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <h2>BWSO</h2>
+                    <p>Dedicated to fostering job creation, innovation, and infrastructure development for a prosperous Bauchi State.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#vision">Our Vision</a></li>
+                        <li><a href="#impact">Impact</a></li>
+                        <li><a href="#join">Join Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bala Wunti Support Organisation (BWSO). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE BOTTOM ACTION BAR -->
+    <div class="mobile-bottom-bar">
+        <button class="btn-bottom-join" onclick="document.getElementById('join').scrollIntoView({behavior: 'smooth'})">
+            <i class="ph ph-users"></i> JOIN US
+        </button>
+        <button class="btn-bottom-donate" onclick="document.getElementById('join').scrollIntoView({behavior: 'smooth'})">
+            <i class="ph-fill ph-heart"></i> DONATE
+        </button>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile Menu Toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                if(navLinks.classList.contains('active')){
+                    mobileToggle.classList.replace('ph-list', 'ph-x');
+                } else {
+                    mobileToggle.classList.replace('ph-x', 'ph-list');
+                }
+            });
+
+            // Close mobile menu when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileToggle.classList.replace('ph-x', 'ph-list');
+                });
+            });
+
+            // Scroll Reveal Animation via Intersection Observer
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: unobserve after revealing once
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15, // Trigger when 15% of element is visible
+                rootMargin: "0px"
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Animated Number Counters (Impact Section)
+            const counters = document.querySelectorAll('.counter');
+            let hasCounted = false;
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                const [entry] = entries;
+                if (entry.isIntersecting && !hasCounted) {
+                    hasCounted = true;
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const duration = 2000; // Total duration in ms
+                        const increment = target / (duration / 16); // 16ms approx 60fps
+
+                        let current = 0;
+                        const updateCounter = () => {
+                            current += increment;
+                            if (current < target) {
+                                counter.innerText = Math.ceil(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+                        updateCounter();
+                    });
+                }
+            }, { threshold: 0.5 });
+
+            const impactSection = document.getElementById('impact');
+            if (impactSection) {
+                counterObserver.observe(impactSection);
+            }
+        });
+    </script>
+</body>
+</html>
